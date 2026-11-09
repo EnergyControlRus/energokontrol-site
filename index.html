@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ЭнергоКонтроль</title>
+  <meta name="description" content="Цифровой контроль качества строительства энергообъектов: мобильное приложение, которое работает без связи на площадке, веб-панель руководителя и PDF-акты.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#how">Перейти к демонстрации</a>
+
+  <header id="top" class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="logo" href="#top" aria-label="ЭнергоКонтроль, в начало страницы">
+        <svg class="logo__mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 2 4 13.5h6.5L9.5 22 20 9.5h-6.5z"/></svg>
+        ЭнергоКонтроль
+      </a>
+      <nav class="site-nav" aria-label="Разделы">
+        <a href="#how">Как работает</a>
+        <a href="#features">Возможности</a>
+      </nav>
+      <a class="btn btn--primary btn--small" href="#contacts">Связаться<span class="wide-only">&nbsp;для установки</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section--dark">
+      <div class="wrap hero__inner">
+        <div class="hero__text">
+          <h1>Контроль качества строительства энергообъектов</h1>
+          <p class="hero__lead">Даже без связи на площадке. Инженер фиксирует нарушение на телефоне, прораб устраняет, руководитель видит картину по объекту и получает PDF-акты.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#contacts">Связаться для установки</a>
+            <a class="btn btn--ghost" href="#how">Посмотреть, как работает</a>
+          </div>
+        </div>
+        <div class="hero__device">
+          <div class="phone">
+            <img src="img/app-02-objects.png" alt="Экран «Объекты»: подстанция 110/10 кВ «Северная», статус «Синхронизировано»" width="720" height="1600">
+          </div>
+        </div>
+      </div>
+      <div class="hazard" aria-hidden="true"></div>
+    </section>
+
+    <section class="section" aria-labelledby="problem-title">
+      <div class="wrap">
+        <h2 id="problem-title">Что меняется на стройке</h2>
+        <div class="compare">
+          <div class="compare__head" aria-hidden="true"><span>Было</span><span>Стало</span></div>
+          <div class="compare__row">
+            <p class="compare__before"><span class="compare__label">Было</span>Замечания в бумажных актах, фото в мессенджерах. Через месяц не найти, кто что нашёл и когда.</p>
+            <p class="compare__after"><span class="compare__label">Стало</span>У каждого нарушения своя карточка: фото, видео, геометка, норматив и история с авторами.</p>
+          </div>
+          <div class="compare__row">
+            <p class="compare__before"><span class="compare__label">Было</span>На подстанции в поле нет связи, и запись откладывается «до офиса».</p>
+            <p class="compare__after"><span class="compare__label">Стало</span>Приложение работает офлайн и само отправляет данные на сервер, когда появляется сеть.</p>
+          </div>
+          <div class="compare__row">
+            <p class="compare__before"><span class="compare__label">Было</span>Сроки устранения держат в голове, просрочки всплывают на планёрке.</p>
+            <p class="compare__after"><span class="compare__label">Стало</span>Статусы, уведомления исполнителю и отметки «просрочено» и «истекает» у каждого замечания.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="section section--tint" aria-labelledby="how-title">
+      <div class="wrap">
+        <h2 id="how-title">Как это работает</h2>
+        <p class="section__lead">Выберите роль и пройдите по шагам. Это настоящие экраны приложения и веб-панели на демо-объекте.</p>
+        <div class="demo">
+          <div class="demo__controls">
+            <div id="role-tabs" class="tabs"></div>
+            <div id="role-steps" class="steps"></div>
+          </div>
+          <figure class="demo__stage">
+            <button id="offline-toggle" class="toggle" type="button" aria-pressed="false" hidden>
+              <span class="toggle__track" aria-hidden="true"></span>
+              Нет связи
+            </button>
+            <div id="device" class="phone">
+              <img id="device-img" src="img/app-01-login.png" alt="Экран входа в приложение" width="720" height="1600">
+            </div>
+            <figcaption id="device-caption" class="demo__caption" aria-live="polite">Вход по логину и паролю. Адрес сервера виден прямо на экране входа.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="lifecycle" class="section" aria-labelledby="lifecycle-title">
+      <div class="wrap">
+        <h2 id="lifecycle-title">Жизненный цикл нарушения</h2>
+        <p class="section__lead">Нажмите на статус, чтобы узнать, кто переводит в него замечание.</p>
+        <div id="status-chain" class="chain"></div>
+        <div id="status-detail" class="chain__detail" aria-live="polite">
+          <p><strong>Создано.</strong> Инженер технадзора фиксирует нарушение: фото, норматив, критичность и срок, при необходимости сразу назначает исполнителя. Дальше: в работе у прораба, на проверке, закрыто или возвращено на доработку.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section section--tint" aria-labelledby="features-title">
+      <div class="wrap">
+        <h2 id="features-title">Возможности</h2>
+        <div class="features">
+          <article class="card">
+            <h3>Работа без интернета</h3>
+            <p>Локальная база на телефоне и очередь изменений. Изменения уходят на сервер сами, как только появляется связь, и не теряются после закрытия приложения.</p>
+          </article>
+          <article class="card">
+            <h3>Справочник нормативов</h3>
+            <p>17 категорий и 55 типовых нарушений со ссылками на ПУЭ, СП и ГОСТ. Описание и норматив подставляются одним нажатием.</p>
+          </article>
+          <article class="card">
+            <h3>Шесть ролей</h3>
+            <p>Администратор, руководитель проекта, инженер технадзора, прораб, инженер ПТО и наблюдатель. Каждый видит и делает своё.</p>
+          </article>
+          <article class="card">
+            <h3>PDF-акты с подписью</h3>
+            <p>Акт по нарушению и сводный отчёт по объекту. Простая электронная подпись проверяется по контрольной сумме.</p>
+          </article>
+          <article class="card">
+            <h3>Веб-панель руководителя</h3>
+            <p>Аналитика по объекту, структура участков и этапов, пользователи и проверка подписи документов.</p>
+          </article>
+          <article class="card">
+            <h3>Фото, видео и геометка</h3>
+            <p>Несколько снимков и роликов на одно нарушение, координаты места и привязка к участку и этапу работ.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="section section--dark" aria-labelledby="download-title">
+      <div class="wrap download">
+        <div>
+          <h2 id="download-title">Попробовать</h2>
+          <a class="btn btn--primary btn--large" href="#contacts">Связаться для установки</a>
+          <p class="download__note">Приложение для Android (версия 0.2.0, 43 МБ). Напишите нам — поможем установить его и подключим к серверу вашей организации.</p>
+        </div>
+        <div id="contacts" class="contacts">
+          <h3>Связаться с автором</h3>
+          <!-- CONTACTS -->
+          <dl>
+            <dt>Почта</dt>
+            <dd>info@<wbr><span class="nowrap">energokontrol-pro.ru</span></dd>
+            <dt>Telegram</dt>
+            <dd>@energokontrol_pro</dd>
+          </dl>
+          <!-- /CONTACTS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <span>© 2026 ЭнергоКонтроль</span>
+    </div>
+  </footer>
+</body>
+</html>
