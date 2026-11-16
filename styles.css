@@ -467,3 +467,11 @@ section[id] { scroll-margin-top: 60px; }
 /* Подвал */
 .site-footer { background: var(--navy); color: var(--on-navy-muted); border-top: 1px solid rgba(255, 255, 255, 0.08); }
 .site-footer__inner { display: flex; justify-content: space-between; gap: 16px; padding-top: 24px; padding-bottom: 24px; }
+
+/* Грантовая поддержка: всегда на белом, чтобы логотипы фонда читались в любой теме */
+.grant { background: #ffffff; color: #1b3968; border-top: 1px solid #d3dae5; }
+.grant__inner { padding-top: 40px; padding-bottom: 40px; text-align: center; }
+.grant__text { max-width: 68ch; margin: 0 auto 28px; font-size: 0.95rem; line-height: 1.55; }
+.grant__logos { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 32px 72px; }
+.grant__logos img { height: 72px; width: auto; }
+@media (max-width: 400px) { .grant__logos img { height: 60px; } }
